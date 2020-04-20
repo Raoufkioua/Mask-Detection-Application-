@@ -8,11 +8,10 @@ import os
 
 f = open("id_ref.txt", "r")
 Id_ = f.read()
-
 Id_ = int(Id_)
 
 
-class Ui_MainWindow(object):
+class Visual(object):
     def setupUi(self, MainWindow):
         self.decision_var = 0
         MainWindow.setObjectName("MainWindow")
@@ -159,7 +158,7 @@ class Ui_MainWindow(object):
             mon_classe = Cryp_Decry()
             mon_classe.data_base_decrypt(
                 "/root/Documents/MaskProject/Streaming record/", str(self.decision_var))
-            QtCore.QMetaObject.connectSlotsByName(MainWindow)
+           # QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
             Window_View = QtWidgets.QGraphicsScene()
             f = open("path_img_decrypt.txt", "r")
@@ -188,7 +187,7 @@ class Ui_MainWindow(object):
             mon_classe.data_base_decrypt(
                 "/root/Documents/MaskProject/Streaming record/", str(self.decision_var))
 
-            QtCore.QMetaObject.connectSlotsByName(MainWindow)
+           # QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
             Window_View = QtWidgets.QGraphicsScene()
             f = open("path_img_decrypt.txt", "r")
@@ -212,16 +211,14 @@ class Ui_MainWindow(object):
         print("print")
 
 
-
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
+    ui = Visual()
     ui.setupUi(MainWindow)
     f = open("path_img_decrypt.txt", "w")
     f.write("")
     f.close()
-
     MainWindow.show()
     sys.exit(app.exec_())

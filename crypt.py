@@ -7,7 +7,6 @@ import mysql.connector
 from mysql.connector import Error
 
 
-
 class Cryp_Decry():
 
     def __init__(self):
@@ -111,7 +110,7 @@ class Cryp_Decry():
                         f.close()
                 else:
                     pass
-  
+
     def data_base_decrypt(self, path, id):
         connection = mysql.connector.connect(host='localhost',
                                              database='Authority',
@@ -119,22 +118,19 @@ class Cryp_Decry():
                                              password='covid19')
 
         if connection.is_connected():
-
             db_Info = connection.get_server_info()
             print("Connected to MySQL Server version ", db_Info)
             cursor = connection.cursor()
             cursor.execute(
                 "select Path_Img , time from Face_Detec where Id_f like "+id+" ;")
-
             result = cursor.fetchone()
             self.decrypt_file(path+result[0], result[0])
-            f=open("path_img_decrypt.txt","w")
+            f = open("path_img_decrypt.txt", "w")
             f.write(result[0])
             f.close()
-            
-        else :
-            print ("Something went wrong !")
-    
+        else:
+            print("Something went wrong !")
 
-test= Cryp_Decry()
+
+test = Cryp_Decry()
 test.folder_crypting("/root/Documents/MaskProject/Streaming record/")

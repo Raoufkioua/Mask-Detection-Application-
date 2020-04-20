@@ -10,6 +10,8 @@ from PyQt5.QtGui import QImage, QPixmap
 from PyQt5 import QtCore, QtGui, QtWidgets
 import os
 
+from Viz import Visual
+
 
 class Ui_MainWindow(object):
 
@@ -130,7 +132,7 @@ class Ui_MainWindow(object):
 
         self.pushButton5 = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton5.setGeometry(
-            QtCore.QRect(230, 175,110, 31))  # right,verti
+            QtCore.QRect(230, 175, 110, 31))  # right,verti
         font = QtGui.QFont()
         font.setFamily("Prestige Elite Std")
         font.setPointSize(10)
@@ -141,8 +143,6 @@ class Ui_MainWindow(object):
         self.pushButton5.setObjectName("pushButton5")
         self.pushButton5.setStyleSheet("color:#32CD32")
 
-        #
-
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
         Window_View = QtWidgets.QGraphicsScene()
@@ -151,6 +151,8 @@ class Ui_MainWindow(object):
         Window_View.addPixmap(pixmap.scaled(
             550, 999, QtCore.Qt.KeepAspectRatio))
         self.graphicsView.setScene(Window_View)
+
+        self.pushButton5.clicked.connect(self.decryp_Boutton)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -164,9 +166,10 @@ class Ui_MainWindow(object):
         self.pushButton2.setText(_translate("MainWindow", "Camera 2"))
         self.pushButton3.setText(_translate("MainWindow", "Camera 3"))
         self.pushButton4.setText(_translate("MainWindow", "Camera 4"))
-        self.pushButton5.setText(_translate("MainWindow","Decrypt Images"))
+        self.pushButton5.setText(_translate("MainWindow", "Decrypt Images"))
         self.label6.setText(_translate("MainWindow", "Available Camera :"))
-        self.label7.setText(_translate("MainWindow","Visualizing Crypted Images : "))
+        self.label7.setText(_translate(
+            "MainWindow", "Visualizing Crypted Images : "))
 
     def model_restore_from_pb(self, pb_path, node_dict):
         config = tf.ConfigProto(log_device_placement=True,
@@ -444,6 +447,15 @@ class Ui_MainWindow(object):
         cap.release()
 
         cv2.destroyAllWindows()
+
+    def decryp_Boutton(self):
+
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Visual()
+        self.ui.setupUi(self.window)
+        self.window.show()
+
+
 
 if __name__ == "__main__":
     import sys
