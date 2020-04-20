@@ -220,5 +220,6 @@ if __name__ == "__main__":
     f = open("path_img_decrypt.txt", "w")
     f.write("")
     f.close()
+    
     MainWindow.show()
     sys.exit(app.exec_())

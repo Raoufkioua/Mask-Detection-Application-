@@ -11,6 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 import os
 
 from Viz import Visual
+from crypt import Cryp_Decry 
 
 
 class Ui_MainWindow(object):
@@ -56,6 +57,22 @@ class Ui_MainWindow(object):
         self.label7.setObjectName("label6")
         self.label7.setStyleSheet("color:#ffffff")
 
+
+        self.label_8 = QtWidgets.QLabel(self.centralwidget)
+        self.label_8.setGeometry(QtCore.QRect(10, 228, 180, 38))
+        font = QtGui.QFont()
+        font.setFamily("Prestige Elite Std")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        font.setStrikeOut(False)
+        self.label_8.setFont(font)
+        self.label_8.setObjectName("label8")
+        self.label_8.setStyleSheet("color:#ffffff")
+
+
+
+
         self.label_2 = QtWidgets.QLabel(self.centralwidget)
         self.label_2.setGeometry(QtCore.QRect(355, 60, 210, 41))
         font = QtGui.QFont()
@@ -76,8 +93,10 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.label_3.setFont(font)
         self.label_3.setObjectName("label_3")
+        
+        # For the graphic view setup 
         self.graphicsView = QtWidgets.QGraphicsView(self.centralwidget)
-        self.graphicsView.setGeometry(QtCore.QRect(0, 330, 560, 190))
+        self.graphicsView.setGeometry(QtCore.QRect(0, 273, 502, 233))
         self.graphicsView.setObjectName("graphicsView")
         MainWindow.setCentralWidget(self.centralwidget)
         self.label_3.setStyleSheet("color:#fbaf08")
@@ -143,16 +162,44 @@ class Ui_MainWindow(object):
         self.pushButton5.setObjectName("pushButton5")
         self.pushButton5.setStyleSheet("color:#32CD32")
 
+        #start encryption boutton 
+        self.pushButton6 = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton6.setGeometry(
+            QtCore.QRect(140,232, 125, 31))  # right,verti
+        font = QtGui.QFont()
+        font.setFamily("Prestige Elite Std")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(50)
+        self.pushButton6.setFont(font)
+        self.pushButton6.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.pushButton6.setObjectName("pushButton6")
+        self.pushButton6.setStyleSheet("color:#32CD32")
+
+
         self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        #QtCore.QMetaObject.connectSlotsByName(MainWindow)
         Window_View = QtWidgets.QGraphicsScene()
         pixmap = QtGui.QPixmap(
-            "/root/Documents/MaskProject/Assests/Tunisie-coronavirus.jpg")
+            "/root/Documents/MaskProject/Assests/1.png")
         Window_View.addPixmap(pixmap.scaled(
-            550, 999, QtCore.Qt.KeepAspectRatio))
+            500, 500, QtCore.Qt.KeepAspectRatio))
         self.graphicsView.setScene(Window_View)
 
+        
+        #self.graphicsView1 = QtWidgets.QGraphicsView(self.centralwidget)
+        #self.graphicsView1.setGeometry(QtCore.QRect(350, 230, 183,115))
+        #self.graphicsView1.setObjectName("graphicsView")
+
+        #Window_View1 = QtWidgets.QGraphicsScene()
+        #pixmap = QtGui.QPixmap(
+        #    "/root/Documents/MaskProject/Assests/nateg_enetcom.png")
+        #Window_View1.addPixmap(pixmap.scaled(
+        #    180,180, QtCore.Qt.KeepAspectRatio))
+        #self.graphicsView1.setScene(Window_View1)
+
         self.pushButton5.clicked.connect(self.decryp_Boutton)
+        self.pushButton6.clicked.connect(self.encrypt_Boutton)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -167,9 +214,11 @@ class Ui_MainWindow(object):
         self.pushButton3.setText(_translate("MainWindow", "Camera 3"))
         self.pushButton4.setText(_translate("MainWindow", "Camera 4"))
         self.pushButton5.setText(_translate("MainWindow", "Decrypt Images"))
+        self.pushButton6.setText(_translate("MainWindow", "Start Encryption !"))
         self.label6.setText(_translate("MainWindow", "Available Camera :"))
         self.label7.setText(_translate(
             "MainWindow", "Visualizing Crypted Images : "))
+        self.label_8.setText(_translate("MainWidow", "Encrypt Images : "))
 
     def model_restore_from_pb(self, pb_path, node_dict):
         config = tf.ConfigProto(log_device_placement=True,
@@ -455,6 +504,12 @@ class Ui_MainWindow(object):
         self.ui.setupUi(self.window)
         self.window.show()
 
+    def encrypt_Boutton(self):
+        try:
+            encrypt=Cryp_Decry()
+            encrypt.folder_crypting("/root/Documents/MaskProject/Streaming record/")
+        except :
+            print("Please Start MySQL Service on your computer !! ")
 
 
 if __name__ == "__main__":
