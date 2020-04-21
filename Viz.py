@@ -217,9 +217,10 @@ if __name__ == "__main__":
     MainWindow = QtWidgets.QMainWindow()
     ui = Visual()
     ui.setupUi(MainWindow)
-    f = open("path_img_decrypt.txt", "w")
-    f.write("")
-    f.close()
+
+    #f = open("path_img_decrypt.txt", "w")
+    #f.write("")
+    #f.close()
     
     MainWindow.show()
     sys.exit(app.exec_())

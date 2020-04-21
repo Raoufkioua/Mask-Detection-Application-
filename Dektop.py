@@ -5,6 +5,13 @@ import mysql.connector
 from mysql.connector import Error
 from Stream import Ui_MainWindow
 
+#token
+#py ---> exe 
+# viz ken maytesaker besh yebda yee5dem 
+
+
+
+
 class Authentification(object):
     def setupUi(self, MainWindow):
 
@@ -73,13 +80,18 @@ class Authentification(object):
 
         self.label_3.setStyleSheet("color:#DE1414")
         self.retranslateUi(MainWindow)
+        
+        
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
         Window_View = QtWidgets.QGraphicsScene()
         pixmap = QtGui.QPixmap("/root/Documents/MaskProject/Assests/rsz_proof-of-identification-1.png")
         Window_View.addPixmap(pixmap.scaled(
             198, 170, QtCore.Qt.KeepAspectRatio))
 
+
         self.graphicsView.setScene(Window_View)
+        
+        
         self.pushButton.setStyleSheet("color:#7FFF00")
 
         self.pushButton.clicked.connect(self.get_msg)
