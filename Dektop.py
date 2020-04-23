@@ -8,6 +8,9 @@ from Stream import Ui_MainWindow
 #token
 #py ---> exe 
 # viz ken maytesaker besh yebda yee5dem 
+#relative path
+
+#automatiquement cryptage  , cryptage manuellement  
 
 
 
