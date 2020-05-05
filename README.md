@@ -19,7 +19,9 @@ we ’ve used MySql, to stock credentials and encrypted images.
 We have three interfaces , the first for authentification , the second for starting the whole process and crypt and decryp saved 
 captures and the last one for visualisation . 
 ![Screenshot from 2020-04-20 04-40-41](https://user-images.githubusercontent.com/54064593/79709398-b2ca0000-8287-11ea-999c-82e8f3f1147e.png)
-
+![Screenshot from 2020-04-20 04-40-52](https://user-images.githubusercontent.com/54064593/81035830-409a1380-8e62-11ea-915a-d21f61971a99.png)
+![Screenshot from 2020-04-20 04-42-45](https://user-images.githubusercontent.com/54064593/81035843-4bed3f00-8e62-11ea-80c2-e9cc51f6dfa2.png)
+![Screenshot from 2020-04-20 04-42-55](https://user-images.githubusercontent.com/54064593/81035856-53144d00-8e62-11ea-8369-75829076678f.png)
 
 
 
